@@ -1,8 +1,16 @@
-Hello, today I will tell you about React. In next 10-12 minutes I will try to explain the main aspect of React. So, agenda of my presentation is following:
+Hello, today I will tell you about React. In next 10-12 minutes I will try to explain main aspects of React. So, agenda of my presentation is following:
 
-What is react? React components. JSX. State & Props. And virtual Dom.
+What is react?
 
-So, what is React? React is a JavaScript library for creating user interfaces. It was created by Facebook in 2013 in order to solve a number of problems associated with large-scale data-driven websites. React allows you to create complex User Interfaces from small and isolated pieces of code that are called “components”. React is used for the so-called Single Page Application. A single-page application is a site, all the actions in which take place on one page, without its full update.
+React components.
+
+JSX.
+
+State & Props.
+
+And virtual Dom.
+
+So, what is React? React is a JavaScript library for creating user interfaces. It was created by Facebook in 2013 in order to solve a number of problems associated with large-scale data-driven websites. React allows you to create complex User Interfaces from small and isolated pieces of code that are called “components”. React is used for the so-called Single Page Applications. A single-page application is a site, all the actions in which take place on one page, without its full update.
 
 **Components.**
 

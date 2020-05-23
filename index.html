@@ -4,20 +4,290 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>React (Main aspects)</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/blood.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    
+    <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h1>React</h1>
+          <p>(Main aspects)</p>
+          <aside class="notes">
+            Hello, today I will tell you about React. In next 10-12 minutes I will try to explain main aspects of React.
+          </aside>
+        </section>
+        <section>
+          <h2>Agenda</h2>
+          <ol>
+						<li>What is React?</li>
+						<li>Components</li>
+						<li>JSX</li>
+            <li>State</li>
+            <li>Props</li>
+            <li>Virtual DOM</li>
+          </ol>
+          <aside class="notes">
+            All info on slide.
+          </aside>		
+        </section>
+				<section>
+					<h2>What is React?</h2>
+					<img class="reactLogo" src="https://s3.amazonaws.com/media-p.slid.es/uploads/alexanderfarennikov/images/1198519/reactjs.png" alt="react logo">
+					<ul>
+						<li>A JavaScript library for building user interfaces (UI)</li>
+						<li>Creared by Facebook in 2013</li>
+						<li>Based on components approuch</li>
+						<li>Used for creating single page application (SPA)</li>
+          </ul>
+          <aside class="notes">
+            React is a JavaScript library for creating UI.
+            Created by Facebook in 2013 in order to solve a number of problems associated with large-scale data-driven websites.
+            Create UI from small and isolated pieces. 
+            Used for the so-called Single Page Application. 
+            What is SPA.
+          </aside>					
+				</section>
+				<section>
+					<section>
+            <h2>Components</h2>
+            <ul>
+              <li>Each block is component</li>
+              <li>Components can be reused many times</li>
+              <li>Components are similar to JS functions.</li>
+              <li>Can be statefull or stateless</li>
+            </ul>
+            <aside class="notes">
+              Each block is called a component.
+              Each component can contain smaller components and so on.
+              Components allow you to break the interface into independent parts.
+            </aside>	
+					</section>
+					<section>
+            <h3>Components</h3>
+            <p>Webpage components</p>
+            <img class="picture" src="img/components.png" alt="components layout">
+            <aside class="notes">
+              The main advantage - can be reused many times.
+              Development starts with the App-component.
+              Components are similar to JavaScript functions.
+              They take data and return React elements.
+            </aside>						   
+          </section>
+          <section>
+            <h3>Components</h3>
+            <p>1. Functional stateless component</p>            
+						<div class="example" data-markdown>
+              <textarea data-template>
+                ```javascript
+                function Clock(props) {
+                  return (
+                    <div>
+                      <h2>Time: {props.date.toLocaleTimeString()}.</h2>
+                    </div>
+                  );
+                }
+                ```
+              </textarea>              
+            </div>
+            <p>2. Statefull Class-component</p>
+            <div class="example" data-markdown>
+              <textarea data-template>
+                ```javascript
+                class Clock extends React.Component {
+                  constructor(props) {
+                    super(props);
+                    this.state = {date: new Date()};
+                  }
+                  render() {
+                    return (
+                      <div>
+                        <h2>Time: {this.state.date.toLocaleTimeString()}.</h2>
+                      </div>
+                    );
+                  }
+                }
+                ```
+              </textarea>              
+            </div>
+            <aside class="notes">
+              Statefull or stateless/functional or class.
+              Stateless:
+              - functions that take properties and return a DOM element.
+              - only know how to display the received data. 
+              - simplify code and testing.
+              Statefull:
+              - must inherit from the React.Component class.
+              - always call the base constructor with props.
+              Render method: is required; return only one tag.              
+            </aside>               
+          </section>          
+				</section>
+				<section>
+					<section>
+            <h2>JSX</h2>
+            <ul>
+              <li>It is a syntax extension to JavaScript</li>
+              <li>Allows to write HTML in JS(React) code</li>
+              <li>You can use React without JSX</li>              
+              <li>You have to transpile JSX</li>              
+            </ul>
+            <div class="example" data-markdown>
+              <textarea data-template>
+                With JSX
+                ```XML
+                <h1 className="greeting">Hello, world!</h1>
+                ```
+                The same without JSX
+                ```javascript
+                React.createElement(
+                  'h1',
+                  {className: 'greeting'},
+                  'Hello, world!'
+                );
+                ```
+              </textarea>              
+            </div>
+            <aside class="notes">
+              Separate technology / optional to use.
+              Looks like ordinary HTML.
+              HTML tags are correct JavaScript code.
+              Each component has its own tag. About tag ... 
+              After compilation, JSX become regular JavaScript objects. 
+              Use JSX inside the conditional statements and loops, assign it to variables, accept as an argument, return from functions.             
+              Usage in curly brackets...
+            </aside>
+          </section>
+          <section>
+            <h3>JSX usage</h3>
+            <ul>
+              <li>You can use any JS code inside {}</li>
+              <li>The style attribute takes a JS object as a value</li>
+              <li>Use className instead of class</li>
+              <li>All DOM properties and attributes must be in camelCase style</li>
+            </ul>
+            <div class="example" data-markdown>
+              <textarea data-template>
+                ```JSX
+                const Component = (props) => {
+                  const str = 'some string';
+                  return (  
+                    <div>
+                      <h1>{ props.title }</h1>
+                      <p>{ props.value1 + 3 }</p>
+                      <p>The result is { props.value2 > 0 ? 'positive' : 'negative' }!</p>
+                      <span>This is { str }</span>
+                    </div>;
+                  );
+                };
+                
+                <Component title="Some title" value1=2 value2=-1 />;
+                ```
+              </textarea>              
+            </div>
+            <aside class="notes">
+              All info on slide.
+            </aside>                                    
+          </section>
+				</section>
+				<section>
+					<h2>State</h2>
+          <ul>
+            <li>It is object where current state of the components is stored</li>
+            <li>Components re-renders on each state change</li>
+            <li>Initialized in the constructor</li>                   
+            <li>To change state use <span style="color: lightgreen;">this.setState() method</span>, not <span style="color: coral;">this.state = ...</span></li>                           
+          </ul>
+          <aside class="notes">
+            State is the basic concept of React.
+            State is a property of the class component that is set in the constructor. 
+            The state stores the current state of the component in the form of an object with keys and values. 
+            State concept:
+            Firstly, it is data. Example: list of user names.
+            Secondly, it is current state of the component. Example: expanded / collapsed block.
+            Access:this.state.StateName.
+            Change state: setState().
+            Updating state.
+            State should be used in rendering.            
+          </aside>					
+				</section>
+				<section>
+					<h2>Props</h2>
+          <ul>
+            <li>Props are arguments passed into components</li>
+            <li>Props are passed to components via attributes</li>                   
+            <li>Props are read-only! Component shouldn't modify props</li>                           
+          </ul>
+          <aside class="notes">
+            Props are used to get data from the parent component to the child component.
+            Access: props / this.props
+            Child elements: props.children / this.props.children
+            Components allow us to make a separation: displaying data separately from receiving this data. 
+            A component should never modify its Props. Pure functions.
+            Strict rule of React.
+          </aside> 
+				</section>
+        <section>
+          <h2>Props vs State</h2>
+          <div style="display: flex;">
+            <ul style="width: 50%;">
+              <li style="list-style: none; text-align: center; font-weight: 700;">Props</li>
+              <li>Props are immutable</li>
+              <li>Passed from parent component</li>                   
+              <li>Detemine the view upon creation, and then remain static</li>                           
+            </ul> 
+            <ul style="width: 50%;">
+              <li style="list-style: none; text-align: center; font-weight: 700;">State</li>
+              <li>State are mutable</li>
+              <li>Possible to define states in component itself</li>                   
+              <li>The state is set and updated by the object</li>                           
+            </ul> 
+          </div>
+          <aside class="notes">
+            States are the data of the component itself.
+            Props are the data transferred from the parent component.
+            Differences on slide.           
+          </aside>          
+        </section>
+				<section>
+					<section>
+            <h2>Virtual Dom</h2>
+            <ul>
+              <li>Accelerates application rendering and improves performance.</li>
+              <li>React creates Virtual DOM in memory.</li>          
+              <li>Uses 2 virtual trees (new and previous) to find differences</li>
+              <li>In real DOM updates only those parts that are necessary</li>              
+            </ul>
+            <aside class="notes">
+              Virtual DOM is representation of a real DOM.
+              Lightweight copy of real DOM.
+              Work directly with real DOM - inefficient updating.
+              Inefficient updating is a serious problem for performance.
+            </aside>                        
+          </section>
+          <section>
+            <h3>Virtual Dom</h3>
+            <img class="picture" src="img/virtualDom.png" alt="components layout">
+            <aside class="notes">
+              Explanation how virtual DOM work.
+              Synthetic events: improve perfomance and solve problem if incompatibility.             
+            </aside> 
+          </section>          
+				</section>        
+        <section>
+          <h2>Thanks for watching!</h2>
+          <aside class="notes">
+            Hope, that you help. Say thanks and goodbye.
+          </aside>				
+				</section>
 			</div>
 		</div>
 

@@ -1,0 +1,34 @@
+.reveal .controls {
+  color: #42affa;
+}
+
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+  color: #42affa;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #00D8FF;
+}
+
+.reveal img.reactLogo,
+.reveal img.picture {
+  width: 200px;
+  background: none; 
+  border: none;
+  box-shadow: none;
+}
+
+.reveal img.picture {
+  width: 700px;
+}
+
+.example {  
+  font-size: 28px;
+}
+

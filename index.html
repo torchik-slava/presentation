@@ -64,6 +64,7 @@
               <li>Components can be reused many times</li>
               <li>Components are similar to JS functions.</li>
               <li>Can be statefull or stateless</li>
+              <li>Render method returns the result of component</li>
             </ul>
             <aside class="notes">
               Each block is called a component.
@@ -136,8 +137,8 @@
             <h2>JSX</h2>
             <ul>
               <li>It is a syntax extension to JavaScript</li>
-              <li>Allows to write HTML in JS(React) code</li>
-              <li>You can use React without JSX</li>              
+              <li>You can use React without JSX</li>
+              <li>Allows to write HTML in JS(React) code</li>                            
               <li>You have to transpile JSX</li>              
             </ul>
             <div class="example" data-markdown>
@@ -169,7 +170,7 @@
           <section>
             <h3>JSX usage</h3>
             <ul>
-              <li>You can use any JS code inside {}</li>
+              <li>You can use almost any JS code inside {}</li>
               <li>The style attribute takes a JS object as a value</li>
               <li>Use className instead of class</li>
               <li>All DOM properties and attributes must be in camelCase style</li>
@@ -187,12 +188,11 @@
                       <span>This is { str }</span>
                     </div>;
                   );
-                };
-                
-                <Component title="Some title" value1=2 value2=-1 />;
+                };             
                 ```
               </textarea>              
             </div>
+            <pre><code style="font-size: 16px;">&lt;Component title="Some title" value1=2 value2=-1 /&gt;</code></pre>
             <aside class="notes">
               All info on slide.
             </aside>                                    
@@ -202,9 +202,9 @@
 					<h2>State</h2>
           <ul>
             <li>It is object where current state of the components is stored</li>
-            <li>Components re-renders on each state change</li>
-            <li>Initialized in the constructor</li>                   
-            <li>To change state use <span style="color: lightgreen;">this.setState() method</span>, not <span style="color: coral;">this.state = ...</span></li>                           
+            <li>Initialized in the constructor</li>
+            <li>To change state use <span style="color: lightgreen;">this.setState() method</span>, not <span style="color: coral;">this.state = ...</span></li>
+            <li>Components re-renders on each state change</li>                                      
           </ul>
           <aside class="notes">
             State is the basic concept of React.
@@ -223,7 +223,8 @@
 					<h2>Props</h2>
           <ul>
             <li>Props are arguments passed into components</li>
-            <li>Props are passed to components via attributes</li>                   
+            <li>Props are passed to components via attributes</li>
+            <li>Each component simply receives some data and  display it in the required form</li>                   
             <li>Props are read-only! Component shouldn't modify props</li>                           
           </ul>
           <aside class="notes">
